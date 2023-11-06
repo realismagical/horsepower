@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://art/horse2step2.webp" type="Texture" id=2]
+[ext_resource path="res://art/horse1step1.webp" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="AudioStreamMicrophone" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 205.5, 139.5 )
+
+[node name="Player" type="Area2D"]
+position = Vector2( 413, 316 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "walk"
+
+[node name="Microphone" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 2 )
+autoplay = true
+bus = "Record"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -8.5 )
+shape = SubResource( 3 )

@@ -7,8 +7,7 @@ var timer_hide_message = Timer.new()
 func _ready():
 	get_node("Restart").hide()
 	timer_lap.connect("timeout",self,"finish_lap")
-	#timer_lap.wait_time = 60
-	timer_lap.wait_time = 5
+	timer_lap.wait_time = 60
 	timer_lap.one_shot = false
 	add_child(timer_lap)
 	timer_lap.start()
